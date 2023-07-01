@@ -11,7 +11,8 @@
   "dependencies": {
     "@types/swiper": "^6.0.0",
     "swiper": "^9.4.1",
-    "vue": "^3.2.47"
+    "vue": "^3.2.47",
+    "vue-router": "^4.2.2"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
