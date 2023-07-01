@@ -3,8 +3,8 @@
 </script>
 
 <template>
-    <nav class="container flex flex-col items-center justify-center pt-5 bg-slate-100">
-        <ul class="flex gap-10 md:gap-20 pb-6 px-[50px] text-base font-bold md:text-lg rounded-md">
+    <nav class="flex flex-col items-center justify-center pt-5 bg-slate-100">
+        <ul class="list-none flex gap-10 md:gap-20 pb-6 px-[50px] text-base font-bold md:text-lg rounded-md">
             <li class="text-shadow cursor-pointer">Home</li>
             <li class="text-shadow cursor-pointer">Portfolio</li>
             <li class="text-shadow cursor-pointer">Resume</li>
@@ -28,9 +28,5 @@
     text-shadow: 0 0 3px gray;
 }
 
-.under-bar{
-    /* width: 90%;
-    height: 1000px; */
-}
 
 </style>

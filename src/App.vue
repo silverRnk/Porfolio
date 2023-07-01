@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import Navbar from './components/Navbar.vue';
 import Home from './page/Home.vue';
-import Carousel from './components/Carousel.vue'
 import './style.css'
 </script>
 
 <template>
-  <div class="container min-h-[100vh] bg-background1">
+  <div class="bg-background1">
     <Navbar/>
     <main class="md:p-10">
       <Home/>

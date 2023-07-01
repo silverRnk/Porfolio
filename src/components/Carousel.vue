@@ -6,9 +6,10 @@
     modifier: 1,
     slideShadows: true,
   }" :centeredSlides="true" :slidesPerView="'auto'" :pagination="true" class="mySwiper">
-    <swiper-slide>Slide1</swiper-slide>
-    <swiper-slide>Slide2</swiper-slide>
-    <swiper-slide>Slide2</swiper-slide>
+    <swiper-slide v-for="item in items">
+      <img :src="item.imgURL"/>
+      <span>{{ item.title }}</span>
+    </swiper-slide>
   </Swiper>
 </template>
 
@@ -24,6 +25,7 @@ import "swiper/css/pagination";
 
 // import required modules
 import { EffectCoverflow, Pagination, EffectCards } from "swiper";
+import {slideItems} from '../data.ts'
 
 export default {
   components: {
@@ -32,7 +34,8 @@ export default {
   },
   setup() {
     return {
-      modules: [EffectCoverflow, Pagination]
+      modules: [EffectCoverflow, Pagination],
+      items: slideItems
     };
   },
 };
@@ -52,52 +55,42 @@ export default {
   background-size: cover;
   width: 275px;
   height: 275px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px gray;
+  background-color: rgb(245, 235, 235);
+}
+
+.swiper-slide img {
+  height: 175px;
+  width: 175px;
+  object-fit: cover;box-shadow: 0 0 2px gray;
+}
+
+.swiper-slide span {
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 @media only screen and (min-width: 640px) {
   .swiper-slide {
-    width: 500px;
-    height: 300px;
+    width: 600px;
+    height: 400px;
+  }
+
+  .swiper-slide img {
+    width: 400px;
+    height: 250px;
+  }
+
+  .swiper-slide span {
+    margin-top: 15px;
+  font-size: 1.75rem;
+  font-weight: 500;
   }
 }
 
-.swiper-slide:nth-child(1n) {
-  background-color: rgb(206, 17, 17);
-}
-
-.swiper-slide:nth-child(2n) {
-  background-color: rgb(0, 140, 255);
-}
-
-.swiper-slide:nth-child(3n) {
-  background-color: rgb(10, 184, 111);
-}
-
-.swiper-slide:nth-child(4n) {
-  background-color: rgb(211, 122, 7);
-}
-
-.swiper-slide:nth-child(5n) {
-  background-color: rgb(118, 163, 12);
-}
-
-.swiper-slide:nth-child(6n) {
-  background-color: rgb(180, 10, 47);
-}
-
-.swiper-slide:nth-child(7n) {
-  background-color: rgb(35, 99, 19);
-}
-
-.swiper-slide:nth-child(8n) {
-  background-color: rgb(0, 68, 255);
-}
-
-.swiper-slide:nth-child(9n) {
-  background-color: rgb(218, 12, 218);
-}
-
-.swiper-slide:nth-child(10n) {
-  background-color: rgb(54, 94, 77);
-}
 </style>

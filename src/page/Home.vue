@@ -1,12 +1,11 @@
 <script lang="ts">
-import { ref, onMounted, onUnmounted, nextTick } from "vue";
+import { ref} from "vue";
 // Component Import
 import SkillButton from "../components/SkillButton.vue";
-import Navbar from "../components/Navbar.vue";
 import Carousel from "../components/Carousel.vue"
 import CarouselCards from "../components/CarouselCards.vue";
 import { faker } from '@faker-js/faker';
-
+import { skillButtons } from "../data";
 
 const lorem = ref(faker.lorem.paragraph());
 
@@ -19,20 +18,10 @@ export default {
   data() {
     return {
       lorem: faker.lorem.paragraph(),
-      isWindowScreen: screen.width > 600
+      skillButtons: skillButtons
     }
-  },
-  created() {
-    document.addEventListener("resize", this.handleScreenSizeChange)
   },
   
-  methods: {
-    handleScreenSizeChange(e) {
-      console.log(e)
-      this.isWindowScreen = screen.width > 600
-      console.log(this.isWindowScreen)
-    }
-  }
 }
 
 </script>
@@ -53,11 +42,7 @@ export default {
         hover:brightness-[85%] cursor-pointer">
         Hire Me</a>
       <div id="skill-list" class="max-w-[250px] sm:max-w-[400px] flex flex-wrap mt-10 content-start gap-4 ">
-        <SkillButton skill="Javascript" color="bg-[#9A5454]" />
-        <SkillButton skill="PHP" color="bg-[#B5BC5E]" />
-        <SkillButton skill="CSS" color="bg-[#8C4F4F]" />
-        <SkillButton skill="HTML" color="bg-[#8C4F4F]" />
-        <SkillButton skill="Python" color="bg-[#8C4F4F]" />
+        <SkillButton v-for="skill in skillButtons" :skill="skill.name" :color="`bg-[${skill.btnColor}]`" />
         <a class="h-[50px] flex items-start sm:items-end pb-1 text-xl underline cursor-pointer">See more...</a>
       </div>
     </div>
@@ -65,13 +50,11 @@ export default {
     </article>
   </div>
   <div class="Project  px-3 sm:px-5 ">
-    <h2 class="sm:mt-[1.25em] text-2xl sm:text-3xl font-[Lato]">Latest Project</h2>
-    <div v-if="isWindowScreen">
+    <h2 class="mt-3 sm:mt-[1.25em] text-2xl sm:text-3xl font-[Lato]">Latest Project</h2>
+    <div>
       <Carousel />
     </div>
-    <div v-else>
-      <CarouselCards />
-    </div>
+
   </div>
 </template>
 
