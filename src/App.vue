@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Navbar from './components/Navbar.vue';
-import Home from './page/Home.vue';
 import './style.css'
 </script>
 
@@ -8,7 +7,7 @@ import './style.css'
   <div class="bg-background1">
     <Navbar/>
     <main class="md:p-10">
-      <Home/>
+      
     </main>
   </div>
   
